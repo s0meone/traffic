@@ -23,11 +23,7 @@ module Traffic
       
       private
         def rss
-          @data ||= Feedzirra::Feed.fetch_and_parse(rss_feed)
-        end
-        
-        def rss_feed
-          RSS_FEED
+          @data ||= Feedzirra::Feed.fetch_and_parse(RSS_FEED)
         end
     end
   end
