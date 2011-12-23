@@ -101,6 +101,10 @@ describe Traffic do
           @info_item.location.should == "Eemnes en Eembrugge"
         end
                 
+        it "should include a cause" do
+          @info_item.cause.should == "Ongeval(len)"
+        end        
+                
         it "should include a status" do
           @info_item.status.should == "Deze file wordt langer."
         end
