@@ -8,10 +8,8 @@ Gem::Specification.new do |s|
   s.authors     = ["Daniel van Hoesel"]
   s.email       = ["daniel@danielvanhoesel.nl"]
   s.homepage    = ""
-  s.summary     = %q{TODO: Write a gem summary}
-  s.description = %q{TODO: Write a gem description}
-
-  s.rubyforge_project = "traffic"
+  s.summary     = %q{Traffic: the traffic information gem}
+  s.description = %q{Traffic is a gem that supplies traffic information from multiple data providers}
 
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
