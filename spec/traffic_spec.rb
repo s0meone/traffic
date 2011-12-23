@@ -89,15 +89,23 @@ describe Traffic do
           @info_item.road.should == "A1"
         end
         
-        it "should include a length" do
+        it "should include a length in km" do
           @info_item.length.should == 2.6
         end
         
         it "should include a description" do
-          @info_item.description.should == "Langzaam rijdend verkeer tussen Eemnes en Eembrugge"
+          @info_item.description.should == "Langzaam rijdend verkeer"
         end
         
-        it "should include a from location" do
+        it "should include a location" do
+          @info_item.location.should == "Eemnes en Eembrugge"
+        end
+                
+        it "should include a status" do
+          @info_item.status.should == "Deze file wordt langer."
+        end
+        
+        it "should include a from location (hecto markers)" do
           @info_item.from_location.should == 30.2
         end
         

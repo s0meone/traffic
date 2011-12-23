@@ -23,18 +23,20 @@ module Traffic
       
       def each_item(&block)
         rss.entries.each do |entry|
-          item = Struct.new(:road, :from, :to, :from_location, :to_location, :length, :description, :cause, :status).new
+          item = Struct.new(:road, :from, :to, :from_location, :to_location, :location, :length, :description, :cause, :status).new
           data = entry.title.match /(.+?) van (.+) richting (.+) (.+) km/
           item.road = data[1]
           item.from = data[2]
           item.to = data[3]
           item.length = data[4].to_f
 
-          data = entry.summary.match /(.+) HMP([\d\.]+) .+ HMP([\d\.]+)\s*(.*)/
+          data = entry.summary.match /\b(.+)\b tussen \b(.+)\b( door (.*))? HMP([\d\.]+) .+ HMP([\d\.]+)\s*(.*)/
           item.description = data[1]
-          item.from_location = data[2].to_f
-          item.to_location = data[3].to_f
-          item.status = data[4]
+          item.location = data[2]
+          item.cause = data[4]
+          item.from_location = data[5].to_f
+          item.to_location = data[6].to_f
+          item.status = data[7]
           
           yield item
         end

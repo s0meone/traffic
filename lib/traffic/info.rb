@@ -10,6 +10,6 @@ module Traffic
     end
   end
   
-  ITEM_ATTRIBUTES = [:road, :from, :to, :from_location, :to_location, :length, :description, :cause, :status]
+  ITEM_ATTRIBUTES = [:road, :from, :to, :from_location, :to_location, :location, :length, :description, :cause, :status]
   InfoItem = Struct.new(*ITEM_ATTRIBUTES)
 end
