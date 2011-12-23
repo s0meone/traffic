@@ -6,7 +6,7 @@ module Traffic
     # camelcase the name
     Traffic::Providers.const_get "#{name.to_s.gsub(/(?:^|_)(.)/) { $1.upcase }}"
   rescue NameError => e
-    raise "unknown provider specified"
+    raise "unknown provider: #{name}"
   end
 end
 
