@@ -2,7 +2,7 @@ module Traffic
   MAIN_ATTRIBUTES = [:timestamp, :count, :size, :traffic]
   Info = Struct.new(*MAIN_ATTRIBUTES) do
     def traffic?
-      !traffic
+      traffic
     end
     
     def items

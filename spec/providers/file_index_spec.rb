@@ -20,7 +20,7 @@ describe Traffic do
       end
       
       it "should indicate that there is no traffic" do
-        @info.should_not be_traffic
+        @info.traffic.should_not be_true
       end
     end
     
@@ -31,7 +31,7 @@ describe Traffic do
       end
       
       it "should indicate that there is traffic" do
-        @info.should be_traffic
+        @info.traffic.should be_true
       end
       
       it "should return an info object" do

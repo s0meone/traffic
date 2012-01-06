@@ -6,7 +6,7 @@ module Traffic
       RSS_FEED = "http://www.fileindex.nl/rss.php"
       
       def traffic
-        rss.description =~ /Er zijn geen files./
+        !(rss.description =~ /Er zijn geen files./)
       end
       
       def timestamp
