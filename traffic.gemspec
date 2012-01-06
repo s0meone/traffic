@@ -22,5 +22,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency('mocha', '~> 0.10')
   s.add_development_dependency('simplecov', '~> 0.5')
   s.add_development_dependency('fakeweb', '~> 1.3')
-  s.add_dependency('feedzirra', '~> 0.1.1')
+  s.add_dependency('feedzirra', '~> 0.1')
+  s.add_dependency('httpclient', '~> 2.2')
+  s.add_dependency('nokogiri', '~> 1.4')
 end
