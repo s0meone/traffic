@@ -34,6 +34,10 @@ describe Traffic do
         @info.traffic.should be_true
       end
       
+      it "should return a timestamp" do
+        @info.timestamp.strftime("%H:%M").should == "16:15"
+      end
+      
       it "should return an info object" do
         @info.class.should == Traffic::Info
       end
