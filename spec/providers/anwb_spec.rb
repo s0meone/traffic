@@ -36,7 +36,7 @@ describe Traffic do
       end
       
       it "should return a timestamp" do
-        @info.timestamp.strftime("%H:%M").should == "11:20"
+        @info.timestamp.strftime("%H:%M").should == "17:50"
       end
       
       it "should return an info object" do
@@ -44,11 +44,11 @@ describe Traffic do
       end
  
       it "should be able to return the total size" do
-        @info.size.should == 5
+        @info.size.should == 71
       end
       
       it "should be able to return the total count" do
-        @info.count.should == 3
+        @info.count.should == 24
       end
       
       it "should return a list with info items with the same length as count" do
@@ -65,31 +65,31 @@ describe Traffic do
         end
         
         it "should include a from" do
-          @info_item.from.should == "Gouda"
+          @info_item.from.should == "Amersfoort"
         end
         
         it "should include a to" do
-          @info_item.to.should == "Hoek van Holland"
+          @info_item.to.should == "Amsterdam"
         end
         
         it "should include a road number" do
-          @info_item.road.should == "A20"
+          @info_item.road.should == "A1"
         end
         
         it "should include a length in km" do
-          @info_item.length.should == 0.9
+          @info_item.length.should == 2.0
         end
         
         it "should include a description" do
-          @info_item.description.should == "A20 Gouda richting Hoek van Holland bij Spaanse Polder is de rechterrijstrook dicht, door een ongeluk."
+          @info_item.description.should == "A1 Amersfoort richting Amsterdam tussen Amersfoort-Noord en Eembrugge 2 km, Filelengte neemt toe"
         end               
 
         it "should include a from location (hecto markers)" do
-          @info_item.from_location.should == 27.9
+          @info_item.from_location.should == 42.4
         end
         
         it "should include a to location" do
-          @info_item.to_location.should == 27.0
+          @info_item.to_location.should == 33.8
         end
       end
     end

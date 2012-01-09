@@ -35,7 +35,7 @@ describe Traffic do
       end
       
       it "should return a timestamp" do
-        @info.timestamp.strftime("%H:%M").should == "16:15"
+        @info.timestamp.strftime("%H:%M").should == "17:51"
       end
       
       it "should return an info object" do
@@ -43,11 +43,11 @@ describe Traffic do
       end
       
       it "should be able to return the total size" do
-        @info.size.should == 45
+        @info.size.should == 64
       end
       
       it "should be able to return the total count" do
-        @info.count.should == 14
+        @info.count.should == 20
       end
       
       it "should return a list with info items with the same length as count" do
@@ -64,11 +64,11 @@ describe Traffic do
         end
         
         it "should include a from" do
-          @info_item.from.should == "Amsterdam"
+          @info_item.from.should == "Amersfoort"
         end
         
         it "should include a to" do
-          @info_item.to.should == "Amersfoort"
+          @info_item.to.should == "Amsterdam"
         end
         
         it "should include a road number" do
@@ -76,7 +76,7 @@ describe Traffic do
         end
         
         it "should include a length in km" do
-          @info_item.length.should == 2.6
+          @info_item.length.should == 2.2
         end
         
         it "should include a description" do
@@ -84,7 +84,7 @@ describe Traffic do
         end
         
         it "should include a location" do
-          @info_item.location.should == "Eemnes en Eembrugge"
+          @info_item.location.should == "Amersfoort-Noord en Eembrugge"
         end
                 
         it "should include a cause" do
@@ -92,15 +92,15 @@ describe Traffic do
         end        
                 
         it "should include a status" do
-          @info_item.status.should == "Deze file wordt langer."
+          @info_item.status.should == "Deze file wordt korter."
         end
         
         it "should include a from location (hecto markers)" do
-          @info_item.from_location.should == 30.2
+          @info_item.from_location.should == 39.1
         end
         
         it "should include a to location" do
-          @info_item.to_location.should == 32.8
+          @info_item.to_location.should == 36.9
         end
       end
     end
