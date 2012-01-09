@@ -33,7 +33,7 @@ Usage Examples
  	 
 Providers
 ---------
-For now it only includes a provider for the Dutch traffic information from [fileindex.nl](http://www.fileindex.nl/).
+Dutch traffic information from [fileindex.nl](http://www.fileindex.nl/) and [ANWB](http://www.anwb.nl)
 
 Testing
 -------
