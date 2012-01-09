@@ -31,12 +31,16 @@ module Traffic
           item.length = data[4].to_f
 
           data = entry.summary.match /\b(.+)\b tussen \b(.+)\b( door (.*))? HMP([\d\.]+) .+ HMP([\d\.]+)\s*(.*)/
-          item.description = data[1]
-          item.location = data[2]
-          item.cause = data[4]
-          item.from_location = data[5].to_f
-          item.to_location = data[6].to_f
-          item.status = data[7]
+          if data.nil?
+            item.description = entry.summary
+          else
+            item.description = data[1]
+            item.location = data[2]
+            item.cause = data[4]
+            item.from_location = data[5].to_f
+            item.to_location = data[6].to_f
+            item.status = data[7]
+          end
           
           yield item
         end

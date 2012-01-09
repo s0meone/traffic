@@ -24,6 +24,13 @@ describe Traffic do
       end
     end
     
+    it "should be able to handle weird descriptions" do
+      stub_feed "file_index/weird_description.xml"
+      info = Traffic.from(:file_index)
+      info_item = info.items.first
+      info_item.description.should == "weird description"
+    end
+    
     context "when there is traffic" do
       before :each do
         stub_feed "file_index/rss.xml"
