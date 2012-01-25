@@ -30,7 +30,7 @@ module Traffic
           item.to = data[3]
           item.length = data[4].to_f
 
-          data = entry.summary.match /\b(.+)\b tussen \b(.+)\b( door (.*))? HMP([\d\.]+) .+ HMP([\d\.]+)\s*(.*)/
+          data = entry.summary.match /(.+) tussen (.+?)( door (.+))? HMP([\d\.]+) .+ HMP([\d\.]+)\s*(.*)/
           if data.nil?
             item.description = entry.summary
           else

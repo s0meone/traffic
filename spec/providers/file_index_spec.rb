@@ -31,6 +31,19 @@ describe Traffic do
       info_item.description.should == "weird description"
     end
     
+    it "should be able to handle an in apostrophe in the descriptions" do
+      stub_feed "file_index/apostrophe_in_description.xml"
+      info = Traffic.from(:file_index)
+      info_item = info.items.first
+      info_item.location.should == "'s-Gravenpolder en Rilland"
+      info_item.description.should == "Afgesloten"
+      info_item.cause.should == "Veiligheidsincident"
+      info_item.from.should == "Vlissingen"
+      info_item.to.should == "Bergen op Zoom"
+      info_item.from_location.should == 144.7
+      info_item.to_location.should == 144.7
+    end
+    
     context "when there is traffic" do
       before :each do
         stub_feed "file_index/rss.xml"
