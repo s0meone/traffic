@@ -6,6 +6,10 @@ module Traffic
     class Anwb
       HTML_FEED = "http://flitsapp.nl/ios/anwb/"
       
+      def initialize(archived_data=nil)
+        @data = Nokogiri::HTML::Document.parse(archived_data) if archived_data
+      end
+      
       def traffic
         !(count_info[0].text =~ /Totaal aantal meldingen: 0/)
       end

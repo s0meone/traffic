@@ -13,6 +13,8 @@ Usage Examples
 
 	info = Traffic.from(:file_index)
 	
+	info = Traffic.from(:file_index, File.read("/tmp/archive.xml"))
+	
 	puts info.count
 	 #=> 15
 	puts "#{info.size} km"

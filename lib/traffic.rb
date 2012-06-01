@@ -3,8 +3,8 @@ require File.expand_path("../traffic/provider", __FILE__)
 require File.expand_path("../traffic/info", __FILE__)
 
 module Traffic
-  def self.from(provider_name)
-    provider = Provider(provider_name).new
+  def self.from(provider_name, archived_data=nil)
+    provider = Provider(provider_name).new(archived_data)
     info = Info.new
     
     MAIN_ATTRIBUTES.each do |attr|

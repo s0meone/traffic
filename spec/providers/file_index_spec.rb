@@ -13,6 +13,20 @@ describe Traffic do
       Feedzirra::Feed.stubs(:fetch_and_parse).returns(stub)
     end
     
+    context "with data from archive" do
+      it "should not connect to the feed to fetch data" do
+        lambda { Traffic.from(:file_index, File.read(File.expand_path("../../fixtures/file_index/rss.xml", __FILE__))) }.should_not raise_error
+      end
+      
+      it "should be able to parse the archived data" do
+        info = Traffic.from(:file_index, File.read(File.expand_path("../../fixtures/file_index/rss.xml", __FILE__)))
+        info.traffic.should be_true
+        info.timestamp.strftime("%H:%M").should == "17:51"
+        info.items.first.description.should == "Langzaam rijdend verkeer"
+        info.items.first.length.should == 2.2
+      end
+    end
+    
     context "when there is no traffic" do
       before :each do
         stub_feed "file_index/empty_rss.xml"

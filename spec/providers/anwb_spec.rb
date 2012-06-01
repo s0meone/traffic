@@ -14,6 +14,20 @@ describe Traffic do
       HTTPClient.any_instance.stubs(:get).returns(stub)
     end
 
+    context "with data from archive" do
+      it "should not connect to the page to fetch data" do
+        lambda { Traffic.from(:anwb, File.read(File.expand_path("../../fixtures/anwb/traffic.html", __FILE__))) }.should_not raise_error
+      end
+      
+      it "should be able to parse the archived data" do
+        info = Traffic.from(:anwb, File.read(File.expand_path("../../fixtures/anwb/traffic.html", __FILE__)))
+        info.traffic.should be_true
+        info.timestamp.strftime("%H:%M").should == "17:50"
+        info.items.first.description.should == "A1 Amersfoort richting Amsterdam tussen Amersfoort-Noord en Eembrugge 2 km, Filelengte neemt toe"
+        info.items.first.length.should == 2.0
+      end
+    end
+
     context "when there is no traffic" do
       before :each do
         stub_html "anwb/empty.html"

@@ -5,6 +5,10 @@ module Traffic
     class FileIndex
       RSS_FEED = "http://www.fileindex.nl/rss.php"
       
+      def initialize(archived_data=nil)
+        @data = Feedzirra::Feed.parse(archived_data) if archived_data
+      end
+      
       def traffic
         !(rss.description =~ /Er zijn geen files./)
       end
