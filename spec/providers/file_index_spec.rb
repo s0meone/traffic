@@ -68,8 +68,22 @@ describe Traffic do
         @info.traffic.should be_true
       end
       
-      it "should return a timestamp" do
-        @info.timestamp.strftime("%H:%M").should == "17:51"
+      context "timestamp" do
+        it "should return a timestamp" do
+          @info.timestamp.strftime("%H:%M").should == "17:51"
+        end
+      
+        it "should parse the date correctly" do
+          stub_feed "file_index/dutch_date.xml"
+          Traffic.from(:file_index).timestamp.strftime("%Y-%m-%d").should == "2012-05-02"
+        end
+      
+        it "should translate the date" do
+          provider = Traffic::Providers::FileIndex.new
+          provider.send(:translate, "01-mei-2012").should == "01-may-2012"
+          provider.send(:translate, "01-okt-2012").should == "01-oct-2012"
+          provider.send(:translate, "01-maa-2012").should == "01-mar-2012"
+        end
       end
       
       it "should return an info object" do

@@ -14,7 +14,8 @@ module Traffic
       end
       
       def timestamp
-        Time.parse(rss.title.gsub(/Fileindex.nl actuele files /, ""))
+        time_string = translate(rss.title.gsub(/Fileindex.nl actuele files /, ""))
+        Time.parse(time_string)
       end
       
       def count
@@ -53,6 +54,11 @@ module Traffic
       private
         def rss
           @data ||= Feedzirra::Feed.fetch_and_parse(RSS_FEED)
+        end
+        
+        def translate(timestamp)
+          months = {"maa" => "mar", "mei" => "may", "okt" => "oct"}
+          timestamp.gsub(/maa|mei|okt/) { |match| months[match] }
         end
     end
   end
